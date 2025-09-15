@@ -127,6 +127,7 @@ How to run the evaluation script:
 | `"openai/gsm8k"` | `"vertex_ai/gemini-2.5-flash-lite"` | `"vertex_ai/gemini-2.5-flash"` | 31 | 33 (**+2**) | 500 | 50-50-50 |
 | `"openai/gsm8k"` | `"ollama/qwen3:0.6b"` | `"ollama/qwen3:8b"` | 7 | 5 (**-2**) | 500 | 50-50-50 |
 | `"openai/gsm8k"` | `"ollama/gemma3:1b"` | `"ollama/gemma3:4b"` | 9 | 38 (**+29**) | 500 | 50-50-50 |
+| `"openai/gsm8k"` | `"ollama/llama3.2:1b"` | `"ollama/llama3.2:3b"` | 7 | 8 (**+1**) | 500 | 50-50-50 |
 
 **Notice of WIP**: More tests will be done soon on other models (preferrably, small language models first).
 
@@ -314,6 +315,25 @@ How to run the evaluation script:
     7.  **Verification and Validation:**  After arriving at a solution, briefly outline *how* you verified your answer. Did you check your units?  Did you perform a sanity check (e.g., is the answer physically plausible)?
 
     8. **Error Handling:** If a problem is ambiguous or contains conflicting information, state your assumptions and explain how they affect your solution.
+    ```
+* Model: `"ollama/llama3.2:1b"`, Dataset: `"openai/gsm8k"`, Budget: `500`:
+    ```
+    You are an AI assistant that solves mathematical word problems. You will be given a question and you need to provide a step-by-step solution to the problem. Finally, you will provide the answer to the question. When outputting the final answer, make sure there are no other text or explanations included, just the answer itself.
+
+    The expected output must be a JSON object with the following format:
+    {
+        "final_answer": <the final answer to the question>,
+        "solution_pad": <the step-by-step solution to the problem>
+    }
+
+    Strictly follow the format provided above and ensure that your output is a valid JSON object. Any deviation from this format will result in an error.
+
+    Please note the following guidelines when solving mathematical word problems:
+
+    - Pay close attention to units of measurement (e.g., feet, meters) and ensure they are consistent throughout the problem.
+    - Identify any relevant constraints or assumptions that need to be made when solving the problem.
+    - Provide clear explanations for each step in your solution.
+    - When outputting the final answer, include it exactly as specified in the format.
     ```
 
 ---
